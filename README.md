@@ -70,6 +70,27 @@ Use `--ignore` with [Ant path patterns](https://ant.apache.org/manual/dirtasks.h
 - `**/*.log` — exclude log files in any subdirectory
 - `build/**` — exclude everything under the `build/` directory
 
+## Installation
+
+Pre-built binaries are available from the [GitHub Releases](https://github.com/coderpatros/cyclonedx-integrity-verification/releases) page. Download the archive for your platform:
+
+| Platform | Archive |
+|---|---|
+| Linux (x64) | `cdx-verify-linux-x64.tar.gz` |
+| Linux (ARM64) | `cdx-verify-linux-arm64.tar.gz` |
+| macOS (Intel) | `cdx-verify-osx-x64.tar.gz` |
+| macOS (Apple Silicon) | `cdx-verify-osx-arm64.tar.gz` |
+| Windows (x64) | `cdx-verify-win-x64.zip` |
+| Windows (ARM64) | `cdx-verify-win-arm64.zip` |
+
+Extract the archive and place the `cdx-verify` binary (or `cdx-verify.exe` on Windows) somewhere on your `PATH`.
+
+```bash
+# Example for Linux (x64)
+tar xzf cdx-verify-linux-x64.tar.gz
+sudo mv cdx-verify /usr/local/bin/
+```
+
 ## Building
 
 Requires [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).

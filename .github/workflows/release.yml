@@ -35,20 +35,20 @@ jobs:
           /p:PublishSingleFile=true
           /p:Version=${{ steps.version.outputs.version }}
 
-      - name: Rename binary
+      - name: Create archive
         run: |
           publish_dir="src/CycloneDx.IntegrityVerification/bin/Release/net8.0/${{ matrix.rid }}/publish"
           if [[ "${{ matrix.rid }}" == win-* ]]; then
-            mv "$publish_dir/cdx-verify.exe" "$publish_dir/cdx-verify-${{ matrix.rid }}.exe"
+            (cd "$publish_dir" && zip "$GITHUB_WORKSPACE/cdx-verify-${{ matrix.rid }}.zip" cdx-verify.exe)
           else
-            mv "$publish_dir/cdx-verify" "$publish_dir/cdx-verify-${{ matrix.rid }}"
+            (cd "$publish_dir" && chmod +x cdx-verify && tar czf "$GITHUB_WORKSPACE/cdx-verify-${{ matrix.rid }}.tar.gz" cdx-verify)
           fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: cdx-verify-${{ matrix.rid }}
-          path: src/CycloneDx.IntegrityVerification/bin/Release/net8.0/${{ matrix.rid }}/publish/cdx-verify-${{ matrix.rid }}*
+          path: cdx-verify-${{ matrix.rid }}.*
 
   release:
     runs-on: ubuntu-latest
