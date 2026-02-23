@@ -17,7 +17,7 @@
 
 using System.CommandLine;
 using CycloneDX.Json;
-using CycloneDx.IntegrityVerification;
+using CycloneDX.IntegrityVerification;
 
 var sbomFileArg = new Argument<FileInfo>(
     "sbom-file",

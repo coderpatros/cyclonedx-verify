@@ -15,10 +15,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Patrick Dwyer. All Rights Reserved.
 
-using CycloneDx.IntegrityVerification;
+using CycloneDX.IntegrityVerification;
 using HashAlg = CycloneDX.Models.Hash.HashAlgorithm;
 
-namespace CycloneDx.IntegrityVerification.Tests;
+namespace CycloneDX.IntegrityVerification.Tests;
 
 public class UntrackedFileDetectorTests : IDisposable
 {

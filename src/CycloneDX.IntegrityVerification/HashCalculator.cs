@@ -19,7 +19,7 @@ using System.Security.Cryptography;
 using CycloneDX.Models;
 using HashAlg = CycloneDX.Models.Hash.HashAlgorithm;
 
-namespace CycloneDx.IntegrityVerification;
+namespace CycloneDX.IntegrityVerification;
 
 public static class HashCalculator
 {

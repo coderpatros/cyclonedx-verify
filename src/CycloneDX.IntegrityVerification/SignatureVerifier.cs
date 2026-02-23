@@ -21,7 +21,7 @@ using CoderPatros.Jsf;
 using CoderPatros.Jsf.Keys;
 using CoderPatros.Jsf.Models;
 
-namespace CycloneDx.IntegrityVerification;
+namespace CycloneDX.IntegrityVerification;
 
 public record SignatureVerificationResult(
     bool Verified,

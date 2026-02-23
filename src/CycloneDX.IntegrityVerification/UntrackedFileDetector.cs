@@ -17,7 +17,7 @@
 
 using AntPathMatching;
 
-namespace CycloneDx.IntegrityVerification;
+namespace CycloneDX.IntegrityVerification;
 
 public record UntrackedFileResult(List<string> UntrackedFiles, List<string> IgnoredFiles);
 

@@ -18,7 +18,7 @@
 using CycloneDX.Models;
 using HashAlg = CycloneDX.Models.Hash.HashAlgorithm;
 
-namespace CycloneDx.IntegrityVerification;
+namespace CycloneDX.IntegrityVerification;
 
 public record ComponentVerificationResult(
     string ComponentName,

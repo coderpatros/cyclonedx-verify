@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CycloneDx.IntegrityVerification\CycloneDx.IntegrityVerification.csproj" />
+    <ProjectReference Include="..\..\src\CycloneDX.IntegrityVerification\CycloneDX.IntegrityVerification.csproj" />
   </ItemGroup>
 
 </Project>

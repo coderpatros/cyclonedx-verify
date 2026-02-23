@@ -3,14 +3,14 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>CycloneDx.IntegrityVerification</RootNamespace>
+    <RootNamespace>CycloneDX.IntegrityVerification</RootNamespace>
     <AssemblyName>cdx-verify</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="CycloneDx.IntegrityVerification.Tests" />
+    <InternalsVisibleTo Include="CycloneDX.IntegrityVerification.Tests" />
   </ItemGroup>
 
   <ItemGroup>
