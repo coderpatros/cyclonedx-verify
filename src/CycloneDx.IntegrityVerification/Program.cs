@@ -156,20 +156,25 @@ static int Run(FileInfo sbomFile, DirectoryInfo? baseDir, FileInfo? keyFile, boo
     Console.WriteLine();
     Console.WriteLine("=== Untracked File Detection ===");
 
-    var untrackedFiles = UntrackedFileDetector.DetectUntrackedFiles(
+    var untrackedResult = UntrackedFileDetector.DetectUntrackedFiles(
         baseDirPath, hashResults, ignorePatterns ?? Array.Empty<string>());
 
-    if (untrackedFiles.Count == 0)
+    foreach (var file in untrackedResult.IgnoredFiles)
+    {
+        WriteIgnored($"  {file}");
+    }
+
+    if (untrackedResult.UntrackedFiles.Count == 0)
     {
         WritePass("No untracked files found.");
     }
     else
     {
-        foreach (var file in untrackedFiles)
+        foreach (var file in untrackedResult.UntrackedFiles)
         {
             WriteFail($"  {file}");
         }
-        WriteFail($"{untrackedFiles.Count} untracked file(s) found in base directory.");
+        WriteFail($"{untrackedResult.UntrackedFiles.Count} untracked file(s) found in base directory.");
         overallPass = false;
     }
 
@@ -242,6 +247,12 @@ static void WriteFail(string message)
 static void WriteSkipped(string message)
 {
     WriteColored("[SKIP] ", ConsoleColor.Yellow);
+    Console.WriteLine(message);
+}
+
+static void WriteIgnored(string message)
+{
+    WriteColored("[IGNORED] ", ConsoleColor.DarkGray);
     Console.WriteLine(message);
 }
 

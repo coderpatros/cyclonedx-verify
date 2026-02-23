@@ -19,9 +19,11 @@ using AntPathMatching;
 
 namespace CycloneDx.IntegrityVerification;
 
+public record UntrackedFileResult(List<string> UntrackedFiles, List<string> IgnoredFiles);
+
 public static class UntrackedFileDetector
 {
-    public static List<string> DetectUntrackedFiles(
+    public static UntrackedFileResult DetectUntrackedFiles(
         string baseDir,
         List<ComponentVerificationResult> verificationResults,
         IEnumerable<string> ignorePatterns)
@@ -45,13 +47,21 @@ public static class UntrackedFileDetector
             .Select(p => new Ant(p))
             .ToList();
 
-        var untracked = diskFiles
+        var nonVerified = diskFiles
             .Where(f => !verifiedPaths.Contains(f))
+            .ToList();
+
+        var ignored = nonVerified
+            .Where(f => antPatterns.Any(a => a.IsMatch(f)))
+            .OrderBy(f => f, StringComparer.Ordinal)
+            .ToList();
+
+        var untracked = nonVerified
             .Where(f => !antPatterns.Any(a => a.IsMatch(f)))
             .OrderBy(f => f, StringComparer.Ordinal)
             .ToList();
 
-        return untracked;
+        return new UntrackedFileResult(untracked, ignored);
     }
 
     private static void CollectVerifiedPaths(

@@ -67,10 +67,11 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("b.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, Array.Empty<string>());
 
-        Assert.Empty(untracked);
+        Assert.Empty(result.UntrackedFiles);
+        Assert.Empty(result.IgnoredFiles);
     }
 
     [Fact]
@@ -84,11 +85,12 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("a.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, Array.Empty<string>());
 
-        Assert.Single(untracked);
-        Assert.Equal("extra.txt", untracked[0]);
+        Assert.Single(result.UntrackedFiles);
+        Assert.Equal("extra.txt", result.UntrackedFiles[0]);
+        Assert.Empty(result.IgnoredFiles);
     }
 
     [Fact]
@@ -102,10 +104,12 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("a.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, new[] { "*.log" });
 
-        Assert.Empty(untracked);
+        Assert.Empty(result.UntrackedFiles);
+        Assert.Single(result.IgnoredFiles);
+        Assert.Equal("extra.log", result.IgnoredFiles[0]);
     }
 
     [Fact]
@@ -120,10 +124,13 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("a.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, new[] { "**/*.log" });
 
-        Assert.Empty(untracked);
+        Assert.Empty(result.UntrackedFiles);
+        Assert.Equal(2, result.IgnoredFiles.Count);
+        Assert.Contains("logs/debug.log", result.IgnoredFiles);
+        Assert.Contains("logs/sub/trace.log", result.IgnoredFiles);
     }
 
     [Fact]
@@ -137,11 +144,11 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("a.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, Array.Empty<string>());
 
-        Assert.Single(untracked);
-        Assert.Equal("sub/untracked.txt", untracked[0]);
+        Assert.Single(result.UntrackedFiles);
+        Assert.Equal("sub/untracked.txt", result.UntrackedFiles[0]);
     }
 
     [Fact]
@@ -156,10 +163,13 @@ public class UntrackedFileDetectorTests : IDisposable
             MakeFileResult("a.txt"),
         };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, new[] { "build/**" });
 
-        Assert.Empty(untracked);
+        Assert.Empty(result.UntrackedFiles);
+        Assert.Equal(2, result.IgnoredFiles.Count);
+        Assert.Contains("build/output.bin", result.IgnoredFiles);
+        Assert.Contains("build/sub/other.bin", result.IgnoredFiles);
     }
 
     [Fact]
@@ -170,12 +180,12 @@ public class UntrackedFileDetectorTests : IDisposable
 
         var results = new List<ComponentVerificationResult>();
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, Array.Empty<string>());
 
-        Assert.Equal(2, untracked.Count);
-        Assert.Contains("a.txt", untracked);
-        Assert.Contains("b.txt", untracked);
+        Assert.Equal(2, result.UntrackedFiles.Count);
+        Assert.Contains("a.txt", result.UntrackedFiles);
+        Assert.Contains("b.txt", result.UntrackedFiles);
     }
 
     [Fact]
@@ -197,10 +207,10 @@ public class UntrackedFileDetectorTests : IDisposable
 
         var results = new List<ComponentVerificationResult> { nestedResult };
 
-        var untracked = UntrackedFileDetector.DetectUntrackedFiles(
+        var result = UntrackedFileDetector.DetectUntrackedFiles(
             _baseDir, results, Array.Empty<string>());
 
-        Assert.Single(untracked);
-        Assert.Equal("extra.txt", untracked[0]);
+        Assert.Single(result.UntrackedFiles);
+        Assert.Equal("extra.txt", result.UntrackedFiles[0]);
     }
 }

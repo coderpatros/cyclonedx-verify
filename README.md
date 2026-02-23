@@ -40,6 +40,55 @@ cdx-verify sbom.json --base-dir /path/to/files --key-file public.jwk
 cdx-verify sbom.json --ignore "build/**" --ignore "**/*.log"
 ```
 
+### Example output
+
+```
+$ ./cdx-verify bom.json --ignore bom.*
+=== Signature Verification ===
+[SKIP] No signature found in SBOM. Skipping signature verification.
+
+=== Hash Verification ===
+[PASS]     cdx-verify [SHA_256]
+[PASS]     cdx-verify.deps.json [SHA_256]
+[PASS]     cdx-verify.dll [SHA_256]
+[PASS]     cdx-verify.pdb [SHA_256]
+[PASS]     cdx-verify.runtimeconfig.json [SHA_256]
+[PASS]     BouncyCastle.Cryptography.dll [SHA_256]
+[PASS]     AntPathMatching.dll [SHA_256]
+[PASS]     CoderPatros.Jsf.dll [SHA_256]
+[PASS]     CycloneDX.Core.dll [SHA_256]
+[PASS]     JetBrains.Annotations.dll [SHA_256]
+[PASS]     Json.More.dll [SHA_256]
+[PASS]     JsonPointer.Net.dll [SHA_256]
+[PASS]     JsonSchema.Net.dll [SHA_256]
+[PASS]     protobuf-net.dll [SHA_256]
+[PASS]     protobuf-net.Core.dll [SHA_256]
+[PASS]     cs/System.CommandLine.resources.dll [SHA_256]
+[PASS]     de/System.CommandLine.resources.dll [SHA_256]
+[PASS]     es/System.CommandLine.resources.dll [SHA_256]
+[PASS]     fr/System.CommandLine.resources.dll [SHA_256]
+[PASS]     it/System.CommandLine.resources.dll [SHA_256]
+[PASS]     ja/System.CommandLine.resources.dll [SHA_256]
+[PASS]     ko/System.CommandLine.resources.dll [SHA_256]
+[PASS]     pl/System.CommandLine.resources.dll [SHA_256]
+[PASS]     pt-BR/System.CommandLine.resources.dll [SHA_256]
+[PASS]     ru/System.CommandLine.resources.dll [SHA_256]
+[PASS]     System.CommandLine.dll [SHA_256]
+[PASS]     tr/System.CommandLine.resources.dll [SHA_256]
+[PASS]     zh-Hans/System.CommandLine.resources.dll [SHA_256]
+[PASS]     zh-Hant/System.CommandLine.resources.dll [SHA_256]
+[PASS]     System.IO.Abstractions.dll [SHA_256]
+[PASS]     TestableIO.System.IO.Abstractions.dll [SHA_256]
+[PASS]     TestableIO.System.IO.Abstractions.Wrappers.dll [SHA_256]
+[PASS]     Testably.Abstractions.FileSystem.Interface.dll [SHA_256]
+
+=== Untracked File Detection ===
+[IGNORED]   bom.json
+[PASS] No untracked files found.
+
+[PASS] All verifications passed.
+```
+
 ### Exit codes
 
 | Code | Meaning |
