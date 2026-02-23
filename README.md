@@ -4,7 +4,7 @@ A command-line tool that verifies the integrity of files on disk against a [Cycl
 
 1. **Signatures** are valid (JSF signature verification)
 2. **File hashes** match what the SBOM declares
-3. **No untracked files** exist in the target directory that aren't accounted for in the SBOM
+3. **No untracked files** exist in the target directory that aren't accounted for in the SBOM (or explicitly ignored)
 
 ## Usage
 
