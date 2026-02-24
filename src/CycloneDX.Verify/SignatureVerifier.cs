@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Integrity Verification tool
+// This file is part of CycloneDX Verify tool
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ using CoderPatros.Jsf;
 using CoderPatros.Jsf.Keys;
 using CoderPatros.Jsf.Models;
 
-namespace CycloneDX.IntegrityVerification;
+namespace CycloneDX.Verify;
 
 public record SignatureVerificationResult(
     bool Verified,

@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Integrity Verification tool
+// This file is part of CycloneDX Verify tool
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ using System.Security.Cryptography;
 using CycloneDX.Models;
 using HashAlg = CycloneDX.Models.Hash.HashAlgorithm;
 
-namespace CycloneDX.IntegrityVerification;
+namespace CycloneDX.Verify;
 
 public static class HashCalculator
 {
