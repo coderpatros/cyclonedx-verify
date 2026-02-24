@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/src/">
-    <Project Path="src/CycloneDX.IntegrityVerification/CycloneDX.IntegrityVerification.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/CycloneDX.IntegrityVerification.Tests/CycloneDX.IntegrityVerification.Tests.csproj" />
-  </Folder>
-</Solution>

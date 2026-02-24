@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Integrity Verification tool
+// This file is part of CycloneDX Verify tool
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 
 using System.Security.Cryptography;
 using CycloneDX.Models;
-using CycloneDX.IntegrityVerification;
+using CycloneDX.Verify;
 using HashAlg = CycloneDX.Models.Hash.HashAlgorithm;
 
-namespace CycloneDX.IntegrityVerification.Tests;
+namespace CycloneDX.Verify.Tests;
 
 public class ResolveComponentPathTests
 {

@@ -1,4 +1,4 @@
-# CycloneDX Integrity Verification
+# CycloneDX Verify
 
 A command-line tool that verifies the integrity of files on disk against a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) files in JSON format. It checks that:
 
@@ -121,7 +121,7 @@ Use `--ignore` with [Ant path patterns](https://ant.apache.org/manual/dirtasks.h
 
 ## Installation
 
-Pre-built binaries are available from the [GitHub Releases](https://github.com/coderpatros/cyclonedx-integrity-verification/releases) page. Download the archive for your platform:
+Pre-built binaries are available from the [GitHub Releases](https://github.com/coderpatros/cyclonedx-verify/releases) page. Download the archive for your platform:
 
 | Platform | Archive |
 |---|---|

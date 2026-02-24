@@ -21,10 +21,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore CycloneDX.IntegrityVerification.slnx
+        run: dotnet restore CycloneDX.Verify.slnx
 
       - name: Build
-        run: dotnet build CycloneDX.IntegrityVerification.slnx --no-restore /p:TreatWarningsAsErrors=true
+        run: dotnet build CycloneDX.Verify.slnx --no-restore /p:TreatWarningsAsErrors=true
 
       - name: Test
-        run: dotnet test CycloneDX.IntegrityVerification.slnx --no-build
+        run: dotnet test CycloneDX.Verify.slnx --no-build

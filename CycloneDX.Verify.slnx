@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CycloneDX.Verify/CycloneDX.Verify.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CycloneDX.Verify.Tests/CycloneDX.Verify.Tests.csproj" />
+  </Folder>
+</Solution>
